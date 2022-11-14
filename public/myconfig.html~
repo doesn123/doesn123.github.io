@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+</head>
+<body>
+<div id="content">
+<p>
+#+BEGIN<sub>SRC</sub> emacs-lisp
+</p>
+
+<p>
+(require 'package)
+(setq package-archives '(("melpa" . "<a href="https://melpa.org/packages/">https://melpa.org/packages/</a>")
+			 ("org" . "<a href="https://orgmode.org/elpa/">https://orgmode.org/elpa/</a>")
+			 ("elpa" . "<a href="https://elpa.gnu.org/packages/">https://elpa.gnu.org/packages/</a>")))
+</p>
+
+
+<p>
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+</p>
+
+<p>
+(setq inhibit-startup-screen t)
+(menu-bar-mode -1)
+(load-theme 'modus-vivendi t)
+</p>
+
+<p>
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(require 'xah-fly-keys)
+(xah-fly-keys-set-layout "colemak-dhm")
+</p>
+
+<p>
+(xah-fly-keys 1)
+</p>
+
+<p>
+(fset 'yes-or-no-p 'y-or-n-p)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+</p>
+
+<p>
+(vertico-mode 1)
+  (set-face-foreground 'mode-line "gray")
+  (set-face-background 'mode-line "black")
+  (set-face-foreground 'line-number "#565759")
+  (set-face-background 'line-number "#000000")
+</p>
+
+
+<p>
+;; (define-key dired-mode-map (kbd "DEL") 'dired-up-directory)
+(setq dired-dwim-target t)
+(setq dired-hide-details-mode 1)
+</p>
+
+<p>
+(setq dired-recursive-copies 'top)
+</p>
+
+<p>
+(setq dired-recursive-deletes 'top)
+(defun xah-dired-mode-setup ()
+  "to be run as hook for `dired-mode'."
+  (dired-hide-details-mode 1))
+</p>
+
+<p>
+(add-hook 'dired-mode-hook 'xah-dired-mode-setup)
+</p>
+
+<p>
+(require 'dired )
+(define-key dired-mode-map (kbd "DEL") 'dired-up-directory)
+(define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
+(define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))
+</p>
+
+<p>
+(setq save-abbrevs 'silently)
+</p>
+
+<p>
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("183dfa34e360f5bc2ee4a6b3f4236e6664f4cfce40de1d43c984e0e8fc5b51ae" default))
+ '(package-selected-packages
+   '(modus-themes xclip which-key wc-mode vertico-posframe use-package undo-tree try smooth-scrolling rainbow-delimiters paredit orderless olivetti marginalia magit key-chord ivy-rich helpful helm-core general gcmh evil-tutor evil-collection counsel-projectile consult command-log-mode all-the-icons)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+#+END<sub>SRC</sub> emacs-lisp</p>
+</div>
+</body>
+</html>

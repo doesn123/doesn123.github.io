@@ -1,0 +1,5 @@
+* my site
+
+ - df
+ - sdd
+[[./myconfig.org][Link to config]]
